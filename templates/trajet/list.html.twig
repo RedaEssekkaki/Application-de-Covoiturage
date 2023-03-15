@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des trajets{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/') }}"> <!-- ajouter un trajet.css -->
+{% endblock %}
+
+{% block body %}
+    <h1>Liste des trajets</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Ville de départ</th>
+            <th>Ville de destination</th>
+            <th>Date de départ</th>
+            <th>Date d'arrivée</th>
+            <th>Nombre de places</th>
+            <th>Conducteur</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for trajet in trajets %}
+            <tr>
+                <td>{{ trajet.villeDepart }}</td>
+                <td>{{ trajet.villeDestination }}</td>
+                <td>{{ trajet.dateDepart|date('d/m/Y H:i') }}</td>
+                <td>{{ trajet.dateArrivee|date('d/m/Y H:i') }}</td>
+                <td>{{ trajet.nombrePlaces }}</td>
+                <td>{{ trajet.conducteur.prenom }} {{ trajet.conducteur.nom }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

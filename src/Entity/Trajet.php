@@ -30,12 +30,12 @@ class Trajet
     private $ville_destination;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable = true)
      */
     private $date_depart;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable = true)
      */
     private $date_arrivee;
 
@@ -201,4 +201,9 @@ class Trajet
 
         return $this;
     }
+
+
+
+
+
 }

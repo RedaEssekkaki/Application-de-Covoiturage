@@ -19,13 +19,13 @@ class Reservation
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reservations")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $passager;
 
     /**
      * @ORM\ManyToOne(targetEntity=Trajet::class, inversedBy="reservations")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $trajet;
 
