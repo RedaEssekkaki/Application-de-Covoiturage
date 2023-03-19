@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Supprimer le trajet "{{ trajet.villeDepart }} - {{ trajet.villeDestination }}"{% endblock %}
+        {% block stylesheets %}
+            {{ parent() }}
+            <link rel="stylesheet" href="{{ asset('css/deleteTrajet.css') }}">
+        {% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Supprimer le trajet "{{ trajet.villeDepart }} - {{ trajet.villeDestination }}" ?</h1>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+        <a href="{{ path('trajet.show', {'id': trajet.id}) }}" class="btn btn-primary">Annuler</a>
+    </div>
+{% endblock %}

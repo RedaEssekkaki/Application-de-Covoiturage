@@ -1,37 +1,37 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Liste des trajets{% endblock %}
-
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/') }}"> <!-- ajouter un trajet.css -->
+    <link rel="stylesheet" href="{{ asset('css/listeTrajet.css') }}"> <!-- ajouter un trajet.css -->
 {% endblock %}
-
 {% block body %}
-    <h1>Liste des trajets</h1>
-    <table>
-        <thead>
-        <tr>
-            <th>Ville de départ</th>
-            <th>Ville de destination</th>
-            <th>Date de départ</th>
-            <th>Date d'arrivée</th>
-            <th>Nombre de places</th>
-            <th>Conducteur</th>
-        </tr>
-        </thead>
-        <tbody>
+    <div class="container">
+        <h1>Trajets disponibles</h1>
         {% for trajet in trajets %}
-            <tr>
-                <td>{{ trajet.villeDepart }}</td>
-                <td>{{ trajet.villeDestination }}</td>
-                <td>{{ trajet.dateDepart|date('d/m/Y H:i') }}</td>
-                <td>{{ trajet.dateArrivee|date('d/m/Y H:i') }}</td>
-                <td>{{ trajet.nombrePlaces }}</td>
-                <td>{{ trajet.conducteur.prenom }} {{ trajet.conducteur.nom }}</td>
-            </tr>
+            <a href="{{ path('trajet.show', {id: trajet.id}) }}" class="trajet-link"> <!-- ajout de la classe trajet-link -->
+                <div class="trajet-card">
+                    <div class="trajet-locations">
+                        <div class="trajet-location-depart">
+                            <p>{{ trajet.villeDepart }}</p>
+                        </div>
+                        <div class="trajet-location-destination">
+                            <p>{{ trajet.villeDestination }}</p>
+                        </div>
+                    </div>
+                    <div class="trajet-details">
+                        <div class="trajet-dates">
+                            <p>Départ : {{ trajet.dateDepart|date('d/m/Y H:i') }}</p>
+                            <p>Arrivée : {{ trajet.dateArrivee|date('d/m/Y H:i') }}</p>
+                        </div>
+                        <div class="trajet-places">
+                            <p>{{ trajet.nombrePlaces }} places disponibles</p>
+                        </div>
+                        <div class="trajet-conducteur">
+                            <p>Conducteur : {{ trajet.conducteur.prenom }} {{ trajet.conducteur.nom }}</p>
+                        </div>
+                    </div>
+                </div>
+            </a> <!-- fin de la balise <a> -->
         {% endfor %}
-        </tbody>
-    </table>
+    </div>
 {% endblock %}
-

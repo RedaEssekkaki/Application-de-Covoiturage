@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Covoiturage{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}"> <!-- ajouter un home.css -->
+{% endblock %}
+
+{% block body %}
+    <div class="hero">
+        <div class="container">
+            <h1>Bienvenue sur notre plateforme de covoiturage</h1>
+            <p>Rejoignez notre communauté et partagez vos trajets en toute simplicité.</p>
+            <div class="hero-actions">
+                <a href="" class="hero-btn">Inscription</a> <!--  login et registration-->
+                <a href="" class="hero-btn">Connexion</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

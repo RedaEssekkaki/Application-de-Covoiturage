@@ -3,21 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
         {% endblock %}
 
         {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+            <!-- flatpickr CSS -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+            <!-- flatpickr JavaScript -->
+            <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
         {% endblock %}
     </head>
     <body>
     <nav>
         <ul>
-            <li><a href="">Accueil</a></li>
-            <li><a href="">Trajets</a></li>
+            <li><a href="{{ path('home') }}">Accueil</a></li>
+            <li><a href="{{ path('trajet.list') }}">Trajets</a></li>
             <li><a href="">Réservations</a></li>
             <li><a href="">Profil</a></li>
             <li><a href="">Déconnexion</a></li>

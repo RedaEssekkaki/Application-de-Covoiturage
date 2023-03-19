@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block title %}Afficher Trajet{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/trajet.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <h2>{{ trajet.villeDepart }} &#x2192; {{ trajet.villeDestination }}</h2>
+        <div class="trajet-card">
+            <div class="trajet-info">
+                <div class="trajet-location">
+                    <h3>{{ trajet.villeDepart }} &#x2192; {{ trajet.villeDestination }}</h3>
+                </div>
+                <div class="trajet-dates">
+                    <p>Départ : {{ trajet.dateDepart|date('d/m/Y H:i') }}</p>
+                    <p>Arrivée : {{ trajet.dateArrivee|date('d/m/Y H:i') }}</p>
+                </div>
+                <div class="trajet-places">
+                    <p>{{ trajet.nombrePlaces }} places disponibles</p>
+                    <p class="trajet-conducteur">Conducteur : {{ trajet.conducteur.prenom }} {{ trajet.conducteur.nom }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
