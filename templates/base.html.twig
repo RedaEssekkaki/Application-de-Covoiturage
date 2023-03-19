@@ -21,9 +21,15 @@
         <ul>
             <li><a href="{{ path('home') }}">Accueil</a></li>
             <li><a href="{{ path('trajet.list') }}">Trajets</a></li>
+            <li><a href="{{ path('trajet.create') }}">Offrir un trajet</a></li>
             <li><a href="">Réservations</a></li>
             <li><a href="">Profil</a></li>
-            <li><a href="">Déconnexion</a></li>
+            {% if app.user %}
+                <span class="nav-item">Bonjour, {{ app.user.prenom }}</span>
+                <a class="nav-item" href="{{ path('app_logout') }}">Se déconnecter</a>
+            {% else %}
+                <a class="nav-item" href="{{ path('app_login') }}">Se connecter</a>
+            {% endif %}
         </ul>
     </nav>
         {% block body %}{% endblock %}

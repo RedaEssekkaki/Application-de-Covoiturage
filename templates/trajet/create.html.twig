@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Créer un nouveau trajet{% endblock %}
+{% block title %}Offrir un nouveau trajet{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/createTrajet.css') }}"> <!-- ajouter un home.css -->
@@ -58,7 +58,7 @@
             {{ form_errors(form.nombrePlaces) }}
         </div>
         <!-- Ajoutez d'autres champs si nécessaire -->
-        <button type="submit" class="btn btn-primary">Créer un trajet</button>
+        <button type="submit" class="btn btn-primary">Confirmer</button>
         {{ form_end(form) }}
     </div>
 {% endblock %}
