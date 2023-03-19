@@ -1,0 +1,27 @@
+/* Custom styles for login page */
+
+/* Adjust the height of the login form */
+form {
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+form input[type="email"],
+form input[type="password"] {
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+}
+
+/* Center the sign in button */
+button[type="submit"] {
+    margin-top: 10px;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+/* Add a bottom margin to the alert box */
+.alert-danger {
+    margin-bottom: 10px;
+}

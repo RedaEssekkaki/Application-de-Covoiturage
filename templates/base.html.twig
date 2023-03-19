@@ -25,7 +25,7 @@
             <li><a href="">Réservations</a></li>
             <li><a href="">Profil</a></li>
             {% if app.user %}
-                <span class="nav-item">Bonjour, {{ app.user.prenom }}</span>
+                <li class="username">Bonjour, {{ app.user.prenom }}</li>
                 <a class="nav-item" href="{{ path('app_logout') }}">Se déconnecter</a>
             {% else %}
                 <a class="nav-item" href="{{ path('app_login') }}">Se connecter</a>
