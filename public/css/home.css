@@ -16,7 +16,9 @@ body {
     padding: 100px 0;
     text-align: center;
     background-image: url('https://www.momondo.fr/discover/wp-content/uploads/sites/270/2016/04/dest_italy_atrani_theme_people_tourist_sitting_on_yellow_car_gettyimages-1146363338_universal_within-usage-period_66427.jpg');
-
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 .hero h1 {
@@ -27,7 +29,7 @@ body {
 
 .hero p {
     font-size: 1.2em;
-    margin-bottom: 40px;
+    margin-bottom: 100px;
 }
 
 .hero-actions {

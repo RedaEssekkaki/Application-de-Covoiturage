@@ -4,7 +4,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}"> <!-- ajouter un home.css -->
+    <link rel="stylesheet" href="{{ asset('css/createTrajet.css') }}"> <!-- ajouter un home.css -->
 {% endblock %}
 
 {% block body %}
@@ -13,7 +13,7 @@
             <h1>Bienvenue sur notre plateforme de covoiturage</h1>
             <p>Rejoignez notre communauté et partagez vos trajets en toute simplicité.</p>
             <div class="hero-actions">
-                <a href="" class="hero-btn">Inscription</a> <!--  login et registration-->
+                <a href="{{ path('app_register') }}" class="hero-btn">Inscription</a> <!--  login et registration-->
                 <a href="{{ path('app_login') }}" class="hero-btn">Connexion</a>
             </div>
         </div>

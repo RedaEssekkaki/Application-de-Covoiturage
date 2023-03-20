@@ -1,0 +1,16 @@
+h1 {
+    font-family: Corbel, serif;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
+}
+/* Formulaire */
+.form-group {
+    margin-bottom: 20px;
+    text-align: center;
+}
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}

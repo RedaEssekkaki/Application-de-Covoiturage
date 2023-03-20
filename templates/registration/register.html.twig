@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registration{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/inscription.css') }}">
+{% endblock %}
+{% block body %}
+    <h1>S'inscrire</h1>
+    <div class="form-group">
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+
+
+        {{ form_row(registrationForm.telephone) }}
+        {{ form_row(registrationForm.nom) }}
+        {{ form_row(registrationForm.prenom) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">Inscription</button>
+    {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}
