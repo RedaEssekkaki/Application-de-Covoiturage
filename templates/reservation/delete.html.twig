@@ -1,0 +1,19 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Supprimer une réservation{% endblock %}
+        {% block stylesheets %}
+            {{ parent() }}
+            <link rel="stylesheet" href="{{ asset('css/deleteTrajet.css') }}">
+        {% endblock %}
+{% block body %}
+    <h1>Supprimer la réservation</h1>
+    <p>
+        Êtes-vous sûr de vouloir supprimer la réservation pour le trajet #{{ reservation.trajet.id }} ?
+    </p>
+
+    {{ form_start(form) }}
+    {{ form_widget(form.submit, { 'attr': {'class': 'btn btn-danger'} }) }}
+    <a href="{{ path('reservation.show', { 'id': reservation.id }) }}" class="btn btn-secondary">Annuler</a>
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,44 @@
+{# templates/reservation/show.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la réservation{% endblock %}
+        {% block stylesheets %}
+            {{ parent() }}
+            <link rel="stylesheet" href="{{ asset('css/reservation.css') }}">
+        {% endblock %}
+{% block body %}
+    <h1>Détails de la réservation</h1>
+
+    <table class="table">
+        <tr>
+            <th>Passager</th>
+            <td>{{ reservation.passager.username }}</td>
+        </tr>
+        <tr>
+            <th>Ville de départ</th>
+            <td>{{ reservation.trajet.getVilleDepart() }}</td>
+        </tr>
+        <tr>
+            <th>Ville de destination</th>
+            <td>{{ reservation.trajet.getVilleDestination() }}</td>
+        </tr>
+        <tr>
+            <th>Date de départ</th>
+            <td>{{ reservation.trajet.getDateDepart()|date('d/m/Y H:i') }}</td>
+        </tr>
+        <tr>
+            <th>Date d'arrivée</th>
+            <td>{{ reservation.trajet.getDateArrivee()|date('d/m/Y H:i') }}</td>
+        </tr>
+        <tr>
+            <th>Nombre de places</th>
+            <td>{{ reservation.trajet.getNombrePlaces() }}</td>
+        </tr>
+    </table>
+
+    <a href="{{ path('reservation.list') }}" class="btn btn-primary">Retour à la liste des réservations</a>
+    {% if app.user == reservation.passager or 'ROLE_ADMIN' in app.user.roles %}
+        <a href="{{ path('reservation.delete', {'id': reservation.id}) }}" class="btn btn-danger">Supprimer</a>
+    {% endif %}
+{% endblock %}

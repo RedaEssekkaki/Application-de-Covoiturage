@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des réservations{% endblock %}
+
+{% block body %}
+    <h1>Liste des réservations</h1>
+
+    {% set isAdmin = 'ROLE_ADMIN' in app.user.roles %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            {% if isAdmin %}
+                <th>Passager</th>
+            {% endif %}
+            <th>Ville de départ</th>
+            <th>Ville de destination</th>
+            <th>Date de départ</th>
+            <th>Date d'arrivée</th>
+            <th>Nombre de places</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            {% if isAdmin or app.user == reservation.passager %}
+                <tr>
+                    {% if isAdmin %}
+                        <td>{{ reservation.passager.username }}</td>
+                    {% endif %}
+                    <td>{{ reservation.trajet.getVilleDepart() }}</td>
+                    <td>{{ reservation.trajet.getVilleDestination() }}</td>
+                    <td>{{ reservation.trajet.getDateDepart()|date('d/m/Y H:i') }}</td>
+                    <td>{{ reservation.trajet.getDateArrivee()|date('d/m/Y H:i') }}</td>
+                    <td>{{ reservation.trajet.getNombrePlaces() }}</td>
+                    <td>
+                        <a href="{{ path('reservation.show', {'id': reservation.id}) }}" class="btn btn-info">Voir</a>
+                        {% if app.user == reservation.passager or isAdmin %}
+                            <a href="{{ path('reservation.delete', {'id': reservation.id}) }}" class="btn btn-danger">Supprimer</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+        {% else %}
+            <tr>
+                <td colspan="7">Aucune réservation trouvée.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
