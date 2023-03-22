@@ -1,77 +1,109 @@
-/* Général */
-body {
-    font-family: Arial, sans-serif;
+.body{
+    margin-top: 200px;
 }
 
+
 .container {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
 h1 {
-    font-family: Corbel;
-    font-weight: bold;
-    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
 }
 
-/* Cartes de trajets */
+.trajet-link {
+    text-decoration: none;
+}
+
 .trajet-card {
     display: flex;
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
+    justify-content: space-between;
+    background-color: #f7f7f7;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.trajet-card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.trajet-locations,
+.trajet-details {
+    display: flex;
+    flex-direction: column;
 }
 
 .trajet-locations {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-right: 20px;
+    flex-basis: 30%;
 }
 
 .trajet-location-depart,
 .trajet-location-destination {
+    font-size: 1.1rem;
     font-weight: bold;
-    font-size: 1.2em;
+    color: #333;
+}
+
+.trajet-location-depart::before {
+    content: 'Départ : ';
+    font-weight: normal;
+    color: #666;
+}
+
+.trajet-location-destination::before {
+    content: 'Destination : ';
+    font-weight: normal;
+    color: #666;
 }
 
 .trajet-details {
+    flex-basis: 70%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .trajet-dates,
 .trajet-places,
 .trajet-conducteur {
-    font-size: 0.9em;
-    margin-top: 8px;
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 0.5rem;
 }
 
-.trajet-actions {
-    margin-top: 8px;
+.trajet-dates p {
+    margin-bottom: 0.2rem;
 }
 
-/* ... autres styles ... */
-
-.trajet-btn {
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    font-size: 0.9em;
+.trajet-places {
+    font-weight: bold;
+    color: #333;
 }
 
-.trajet-link { /* ajout des styles pour la classe trajet-link */
-    text-decoration: none;
-    color: inherit;
-    display: block;
+.trajet-conducteur {
+    font-weight: bold;
+    color: #333;
 }
 
-/* ... autres styles ... */
+@media (max-width: 768px) {
+    .trajet-card {
+        flex-direction: column;
+    }
 
+    .trajet-locations,
+    .trajet-details {
+        width: 100%;
+    }
+
+    .trajet-details {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 1rem;
+    }
+}

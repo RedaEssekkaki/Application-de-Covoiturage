@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Bienvenu!{% endblock %}</title>
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     {% endblock %}
 
     {% block javascripts %}
@@ -15,55 +18,93 @@
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     {% endblock %}
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        nav {
-            background-color: #333;
-            padding: 10px;
-        }
-        nav ul {
-            display: flex;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        nav ul li {
-            margin-right: 10px;
-        }
-        nav ul li a {
-            display: block;
-            padding: 5px 10px;
-            color: white;
-            text-decoration: none;
-        }
-        nav ul li a:hover {
-            background-color: #555;
-        }
-        nav ul .username {
-            margin-left: auto;
-            color: white;
-            padding: 5px 10px;
-        }
-    </style>
+
 </head>
 <body>
 <nav>
-    <ul>
-        <li><a href="{{ path('home') }}">Accueil</a></li>
-        <li><a href="{{ path('trajet.list') }}">Trajets</a></li>
-        <li><a href="{{ path('trajet.create') }}">Offrir un trajet</a></li>
-        <li><a href="{{ path('reservation.list') }}">Réservations</a></li>
-        <li><a href="{{ path('profile') }}">Profil</a></li>
-        {% if app.user %}
-            <li class="username">Bonjour, {{ app.user.prenom }}</li>
-            <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
-        {% else %}
-            <li><a href="{{ path('app_login') }}">Se connecter</a></li>
-        {% endif %}
-    </ul>
+    <div class="nav-bar">
+        <i class='bx bx-menu sidebarOpen'></i>
+        <span class="logo navLogo"><a href="#">FLIXCAR</a></span>
+
+        <div class="menu">
+            <div class="logo-toggle">
+                <span class="logo"><a href="#">FLIXCAR</a></span>
+                <i class='bx bx-x siderbarClose'></i>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="{{ path('home') }}">Accueil</a></li>
+                <li><a href="{{ path('trajet.list') }}">Trajets</a></li>
+                <li><a href="{{ path('trajet.create') }}">Offrir un trajet</a></li>
+                <li><a href="{{ path('reservation.list') }}">Réservations</a></li>
+                <li><a href="{{ path('profile') }}">Profil</a></li>
+                {% if app.user %}
+                    <li class="username">Bonjour, {{ app.user.prenom }}</li>
+                    <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+                {% else %}
+                    <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <div class="darkLight-searchBox">
+            <div class="dark-light">
+                <i class='bx bx-moon moon'></i>
+                <i class='bx bx-sun sun'></i>
+            </div>
+
+            <div class="searchBox">
+                <div class="searchToggle">
+                    <i class='bx bx-x cancel'></i>
+                    <i class='bx bx-search search'></i>
+                </div>
+
+                <div class="search-field">
+                    <input type="text" placeholder="Search...">
+                    <i class='bx bx-search'></i>
+                </div>
+            </div>
+        </div>
+    </div>
 </nav>
+
+<script>
+    const body = document.querySelector("body"),
+        nav = document.querySelector("nav"),
+        modeToggle = document.querySelector(".dark-light"),
+        searchToggle = document.querySelector(".searchToggle"),
+        sidebarOpen = document.querySelector(".sidebarOpen"),
+        siderbarClose = document.querySelector(".siderbarClose");
+    let getMode = localStorage.getItem("mode");
+    if(getMode && getMode === "dark-mode"){
+        body.classList.add("dark");
+    }
+    // js code to toggle dark and light mode
+    modeToggle.addEventListener("click" , () =>{
+        modeToggle.classList.toggle("active");
+        body.classList.toggle("dark");
+    // js code to keep user selected mode even page refresh or file reopen
+        if(!body.classList.contains("dark")){
+            localStorage.setItem("mode" , "light-mode");
+        }else{
+            localStorage.setItem("mode" , "dark-mode");
+        }
+    });
+    // js code to toggle search box
+    searchToggle.addEventListener("click" , () =>{
+        searchToggle.classList.toggle("active");
+    });
+    // js code to toggle sidebar
+    sidebarOpen.addEventListener("click" , () =>{
+        nav.classList.add("active");
+    });
+    body.addEventListener("click" , e =>{
+        let clickedElm = e.target;
+        if(!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")){
+            nav.classList.remove("active");
+        }
+    });
+</script>
 {% block body %}{% endblock %}
 </body>
 </html>
