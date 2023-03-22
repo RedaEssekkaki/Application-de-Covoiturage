@@ -29,9 +29,6 @@
                         <div class="trajet-conducteur">
                             <p>Conducteur : {{ trajet.conducteur.prenom }} {{ trajet.conducteur.nom }}</p>
                         </div>
-                        <div class = "reserver">
-                            <a href="{{ path('reservation.create', {'id': trajet.id}) }}" class="btn btn-primary">Réserver</a>
-                        </div>
                     </div>
                 </div>
             </a> <!-- fin de la balise <a> -->

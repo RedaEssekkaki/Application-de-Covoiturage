@@ -59,9 +59,16 @@ class TrajetController extends AbstractController
      */
     public function create(Request $request): Response
     {
+
         $trajet = new Trajet();
         $form = $this->createForm(TrajetType::class, $trajet);
         $form->handleRequest($request);
+
+
+        if (!$this->getUser()) {
+            // Redirige vers la page de connexion si l'utilisateur n'est pas connecté
+            return $this->redirectToRoute('app_login');
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();

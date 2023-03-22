@@ -20,6 +20,9 @@
                     <p>{{ trajet.nombrePlaces }} places disponibles</p>
                     <p class="trajet-conducteur">Conducteur : {{ trajet.conducteur.prenom }} {{ trajet.conducteur.nom }}</p>
                 </div>
+                <div class = "reserver">
+                    <a href="{{ path('reservation.create', {'trajet_id': trajet.id}) }}" class="btn btn-primary">Réserver</a>
+                </div>
             </div>
         </div>
     </div>
