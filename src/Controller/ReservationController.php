@@ -66,6 +66,18 @@ class ReservationController extends AbstractController
      */
     public function create(Trajet $trajet, EntityManagerInterface $entityManager): Response
     {
+
+        $user = $this->getUser();
+
+        // Vérifie si l'utilisateur connecté est le conducteur du trajet
+        if ($user === $trajet->getConducteur()) {
+            // Ajoute un message d'erreur
+            $this->addFlash('error', "Vous ne pouvez pas réserver votre propre trajet.");
+
+            // Redirige vers la page précédente ou une autre page de votre choix
+            return $this->redirectToRoute('trajet.list');
+        }
+
         $nombrePlacesDisponibles = $trajet->getNombrePlaces();
 
         if ($nombrePlacesDisponibles > 0) {
@@ -109,6 +121,14 @@ class ReservationController extends AbstractController
     }
 
 
+    /**
+     * Supprimer une réservation
+     * @Route("/reservation/{id}/delete", name="reservation.delete", requirements={"id"="\d+"})
+     * @param Reservation $reservation
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     * @return Response
+     */
     public function delete(Reservation $reservation, Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createFormBuilder()
