@@ -1,0 +1,77 @@
+/* Général */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    font-family: Corbel;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Cartes de trajets */
+.trajet-card {
+    display: flex;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.trajet-locations {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.trajet-location-depart,
+.trajet-location-destination {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.trajet-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.trajet-dates,
+.trajet-places,
+.trajet-conducteur {
+    font-size: 0.9em;
+    margin-top: 8px;
+}
+
+.trajet-actions {
+    margin-top: 8px;
+}
+
+/* ... autres styles ... */
+
+.trajet-btn {
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.trajet-link { /* ajout des styles pour la classe trajet-link */
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* ... autres styles ... */
+

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Covoiturage{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock %}
+
+{% block body %}
+    <style>
+        .hero{
+            width: 720px;
+            height: auto;
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <div class="hero">
+        <div class="container">
+            <h1>Bienvenue sur notre plateforme de covoiturage</h1>
+            <p>Rejoignez notre communauté et partagez vos trajets en toute simplicité.</p>
+            <div class="hero-actions">
+                <a href="{{ path('app_register') }}" class="hero-btn">Inscription</a> <!--  login et registration-->
+                <a href="{{ path('app_login') }}" class="hero-btn">Connexion</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

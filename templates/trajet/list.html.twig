@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block title %}Liste des trajets{% endblock %}
+{% block stylesheets %}
+    {<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+{% endblock %}
+{% block body %}
+    <style>
+        .container{
+            width: 720px;
+            height: auto;
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <div class="container">
+        <h1>Trajets disponibles</h1>
+        {% for trajet in trajets %}
+            <a href="{{ path('trajet.show', {id: trajet.id}) }}" class="trajet-link"> <!-- ajout de la classe trajet-link -->
+                <div class="trajet-card">
+                    <div class="trajet-locations">
+                        <div class="trajet-location-depart">
+                            <p>{{ trajet.villeDepart }}</p>
+                        </div>
+                        <div class="trajet-location-destination">
+                            <p>{{ trajet.villeDestination }}</p>
+                        </div>
+                    </div>
+                    <div class="trajet-details">
+                        <div class="trajet-dates">
+                            <p>Départ : {{ trajet.dateDepart|date('d/m/Y H:i') }}</p>
+                            <p>Arrivée : {{ trajet.dateArrivee|date('d/m/Y H:i') }}</p>
+                        </div>
+                        <div class="trajet-places">
+                            <p>{{ trajet.nombrePlaces }} places disponibles</p>
+                        </div>
+                        <div class="trajet-conducteur">
+                            <p>Conducteur : {{ trajet.conducteur.prenom }} {{ trajet.conducteur.nom }}</p>
+                        </div>
+                    </div>
+                </div>
+            </a> <!-- fin de la balise <a> -->
+        {% endfor %}
+    </div>
+{% endblock %}

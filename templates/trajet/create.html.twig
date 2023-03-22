@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offrir un nouveau trajet{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/createTrajet.css') }}"> <!-- ajouter un home.css -->
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const flatpickrElements = document.querySelectorAll('[data-toggle="flatpickr"]');
+            flatpickrElements.forEach(function (element) {
+                flatpickr(element, {
+                    enableTime: element.dataset.enableTime === 'true',
+                    dateFormat: element.dataset.enableTime === 'true' ? "d-m-Y H:i" : "d-m-Y",
+                    time_24hr: true,
+                    minDate: 'today',
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <h1>Créer un nouveau trajet</h1>
+        {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_label(form.villeDepart, 'Ville de départ') }}
+            {{ form_widget(form.villeDepart, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.villeDepart) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.villeDestination, 'Ville de destination') }}
+            {{ form_widget(form.villeDestination, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.villeDestination) }}
+        </div>
+        <!-- Date de départ -->
+        <div class="form-group">
+            {{ form_label(form.dateDepart, 'Date de départ') }}
+            {{ form_widget(form.dateDepart,{'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.dateDepart) }}
+        </div>
+
+        <!-- Date d'arrivée -->
+        <div class="form-group">
+            {{ form_label(form.dateArrivee, 'Date d\'arrivée') }}
+            {{ form_widget(form.dateArrivee, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.dateArrivee) }}
+        </div>
+
+
+        <div class="form-group">
+            {{ form_label(form.nombrePlaces, 'Nombre de places') }}
+            {{ form_widget(form.nombrePlaces, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.nombrePlaces) }}
+        </div>
+        <!-- Ajoutez d'autres champs si nécessaire -->
+        <button type="submit" class="btn btn-primary">Confirmer</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+/* Général */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Section hero */
+.hero {
+    background-color: #007bff;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    background-image: url('https://www.momondo.fr/discover/wp-content/uploads/sites/270/2016/04/dest_italy_atrani_theme_people_tourist_sitting_on_yellow_car_gettyimages-1146363338_universal_within-usage-period_66427.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.hero h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 100px;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-btn {
+    background-color: white;
+    color: #007bff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.hero-btn:hover {
+    background-color: #f8f9fa;
+    color: #0069d9;
+}
