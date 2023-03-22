@@ -10,11 +10,14 @@
 {% block body %}
     <div class="hero">
         <div class="container">
-            <h1>Bienvenue sur notre plateforme de covoiturage</h1>
-            <p>Rejoignez notre communauté et partagez vos trajets en toute simplicité.</p>
-            <div class="hero-actions">
-                <a href="{{ path('app_register') }}" class="hero-btn">Inscription</a> <!--  login et registration-->
-                <a href="{{ path('app_login') }}" class="hero-btn">Connexion</a>
+            <div class="blur-bg">
+                <h1>Bienvenue sur notre plateforme de covoiturage</h1>
+                <p>Rejoignez notre communauté et partagez vos trajets en toute simplicité.</p>
+
+                <div class="hero-actions">
+                    <a href="{{ path('app_register') }}" class="hero-btn">Inscription</a> <!--  login et registration-->
+                    <a href="{{ path('app_login') }}" class="hero-btn">Connexion</a>
+                </div>
             </div>
         </div>
     </div>

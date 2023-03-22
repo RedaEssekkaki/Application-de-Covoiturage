@@ -1,5 +1,11 @@
-.body{
-    margin-top: 200px;
+@import 'style.css';
+
+/* Ajoutez ces règles à la fin de votre fichier listeTrajet.css */
+
+
+
+body.dark h1 {
+    color: var(--text-color);
 }
 
 
@@ -13,6 +19,8 @@ h1 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
     color: #333;
+    text-align: center;
+    padding-top: 25px;
 }
 
 .trajet-link {
@@ -83,12 +91,23 @@ h1 {
 
 .trajet-places {
     font-weight: bold;
-    color: #333;
+    color: #2659ff;
 }
 
 .trajet-conducteur {
     font-weight: bold;
-    color: #333;
+
+}
+
+
+.trajet-card {
+    /* ... (Les autres règles CSS existantes) ... */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Ajoutez cette ligne */
+}
+
+.trajet-card:hover {
+    /* ... (Les autres règles CSS existantes) ... */
+    transform: translateY(-10px); /* Ajoutez cette ligne */
 }
 
 @media (max-width: 768px) {

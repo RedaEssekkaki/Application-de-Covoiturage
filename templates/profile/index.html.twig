@@ -1,9 +1,10 @@
-{# templates/profile/index.html.twig #}
-
 {% extends 'base.html.twig' %}
 
 {% block title %}Profil de {{ user.prenom }} {{ user.nom }}{% endblock %}
-
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+{% endblock %}
 {% block body %}
     <h1>Profil de {{ user.prenom }} {{ user.nom }}</h1>
 
@@ -33,4 +34,52 @@
             <td>{{ user.getNotesRecues()|length }}</td>
         </tr>
     </table>
+
+    <h1>Mes trajets proposés</h1>
+    {% if user.trajets|length > 0 %}
+        <ul>
+            {% for trajet in user.trajets %}
+                <a href="{{ path('trajet.show', {id: trajet.id}) }}" class="trajet-link">
+                    <div class="trajet-card">
+                        <div class="trajet-locations">
+                            <div class="trajet-location-depart">
+                                <p>{{ trajet.villeDepart }}</p>
+                            </div>
+                            <div class="trajet-location-destination">
+                                <p>{{ trajet.villeDestination }}</p>
+                            </div>
+                        </div>
+                        <div class="trajet-details">
+                            <div class="trajet-dates">
+                                <p>Départ : {{ trajet.dateDepart|date('d/m/Y H:i') }}</p>
+                                <p>Arrivée : {{ trajet.dateArrivee|date('d/m/Y H:i') }}</p>
+                            </div>
+                            <div class="trajet-places">
+                                <p>{{ trajet.nombrePlaces }} places disponibles</p>
+                            </div>
+                            <div class="trajet-conducteur">
+                                <p>Conducteur : {{ trajet.conducteur.prenom }} {{ trajet.conducteur.nom }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+
+        </ul>
+    {% else %}
+        <p>Aucun trajet proposé pour le moment.</p>
+    {% endif %}
+
+        <h1>Mes notes reçues</h1>
+    <div class = "notes_recues">
+        {% if user.getNotesRecues()|length > 0 %}
+            <ul>
+                {% for note in user.notes_recues %}
+                    <li>{{ note.auteur.prenom }} {{ note.auteur.nom }} : {{ note.note }} / 5 - {{ note.commentaire }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Aucune note reçue pour le moment.</p>
+        {% endif %}
+    </div>
 {% endblock %}

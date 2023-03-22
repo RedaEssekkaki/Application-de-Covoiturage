@@ -1,0 +1,76 @@
+@import "style.css";
+@import 'listeTrajet.css';
+
+
+
+body.dark h1{
+    color: var(--text-color);
+}
+
+
+
+h1, h2 {
+    font-size: 2rem;
+    padding-top: 60px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+.table th, .table td {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+}
+
+.table {
+    background-color: #f7f7f7;
+    font-weight: bold;
+    text-align: left;
+}
+
+.table td {
+    text-align: left;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+.note {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.note-author {
+    margin-right: 0.5rem;
+}
+
+.note-rating {
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+}
+
+.note-rating span {
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.note-comment {
+    font-style: italic;
+}
+
+.notes_recues{
+    background-color: var(--body-color);
+}

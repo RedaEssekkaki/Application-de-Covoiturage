@@ -1,55 +1,87 @@
-/* Général */
-body {
-    font-family: Arial, sans-serif;
+/* Importez le fichier style.css si nécessaire */
+@import 'style.css';
+
+/* Ajoutez les règles CSS ci-dessous */
+
+*{
+    margin: 0 0 0 0;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)) center;
+    background-image: url('https://www.tripsavvy.com/thmb/pT_ZAje6cYUx8w2b4nsCk3FrxRU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/car-traveling-along-winding-road--maui--hawaii--america--usa-737142515-9d7096b173654472968075d805273c8f.jpg');
+    background-size: cover;
 }
 
 .container {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Section hero */
-.hero {
-    background-color: #007bff;
-    color: white;
-    padding: 100px 0;
     text-align: center;
-    background-image: url('https://www.momondo.fr/discover/wp-content/uploads/sites/270/2016/04/dest_italy_atrani_theme_people_tourist_sitting_on_yellow_car_gettyimages-1146363338_universal_within-usage-period_66427.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+    color: #ffffff;
 }
 
-.hero h1 {
-    font-size: 2.5em;
-    font-weight: bold;
-    margin-bottom: 20px;
+.blur-bg {
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 20px;
 }
 
-.hero p {
-    font-size: 1.2em;
-    margin-bottom: 100px;
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: black;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: black;
 }
 
 .hero-actions {
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .hero-btn {
-    background-color: white;
-    color: #007bff;
+    display: inline-block;
+    background-color: var(--nav-color);
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
     text-decoration: none;
-    padding: 12px 24px;
-    border-radius: 5px;
-    font-size: 1.1em;
-    margin: 0 10px;
-    font-weight: bold;
+    margin: 0 1rem;
+    transition: all 0.3s ease;
 }
 
 .hero-btn:hover {
-    background-color: #f8f9fa;
-    color: #0069d9;
+    background-color: rgba(64, 112, 244, 0.8);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 100%;
+        padding: 2rem 0;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .hero-btn {
+        margin: 1rem 0;
+    }
 }
