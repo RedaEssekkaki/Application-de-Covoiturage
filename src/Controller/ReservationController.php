@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Reservation;
 use App\Entity\Trajet;
+use App\Repository\ReservationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,14 +27,14 @@ class ReservationController extends AbstractController
      * @Route("/reservation", name="reservation.list")
      * @return Response
      */
-    public function list(): Response
+    public function list(ReservationRepository $reservationRepository): Response
     {
         $user = $this->security->getUser();
 
         if (in_array('ROLE_ADMIN', $user->getRoles())) {
-            $reservations = $this->getDoctrine()->getRepository(Reservation::class)->findAll();
+            $reservations = $reservationRepository->findNonExpired();
         } else {
-            $reservations = $this->getDoctrine()->getRepository(Reservation::class)->findBy(['passager' => $user]);
+            $reservations = $reservationRepository->findNonExpiredByUser($user);
         }
 
         return $this->render('reservation/list.html.twig', [
@@ -41,6 +42,20 @@ class ReservationController extends AbstractController
         ]);
     }
 
+    /**
+     * Afficher l'historique des réservations pour un utilisateur
+     * @Route("/reservation/history", name="reservation.history")
+     * @return Response
+     */
+    public function history(ReservationRepository $reservationRepository): Response
+    {
+        $user = $this->security->getUser();
+        $reservations = $reservationRepository->findAllByUser($user);
+
+        return $this->render('reservation/history.html.twig', [
+            'reservations' => $reservations,
+        ]);
+    }
     /**
      * Créer une nouvelle réservation
      * @Route("/reservation/new/{trajet_id}", name="reservation.create", requirements={"trajet_id"="\d+"})
@@ -94,14 +109,6 @@ class ReservationController extends AbstractController
     }
 
 
-    /**
-     * Supprimer une réservation
-     * @Route("/reservation/{id}/delete", name="reservation.delete", requirements={"id"="\d+"})
-     * @param Reservation $reservation
-     * @param Request $request
-     * @param EntityManagerInterface $entityManager
-     * @return Response
-     */
     public function delete(Reservation $reservation, Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createFormBuilder()
@@ -116,6 +123,13 @@ class ReservationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Récupère l'objet Trajet associé à la réservation
+            $trajet = $reservation->getTrajet();
+
+            // Augmente le nombre de places disponibles pour le trajet
+            $trajet->setNombrePlaces($trajet->getNombrePlaces() + 1);
+
+            // Supprime la réservation
             $entityManager->remove($reservation);
             $entityManager->flush();
             $this->addFlash('success', 'La réservation a été supprimée avec succès.');
@@ -127,6 +141,7 @@ class ReservationController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
 
 
 

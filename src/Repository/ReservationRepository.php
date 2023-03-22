@@ -47,6 +47,38 @@ class ReservationRepository extends ServiceEntityRepository
         }
     }
 
+    public function findNonExpired()
+    {
+        return $this->createQueryBuilder('r')
+            ->join('r.trajet', 't')
+            ->andWhere('t.date_depart > :now')
+            ->setParameter('now', new \DateTime())
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findNonExpiredByUser($user)
+    {
+        return $this->createQueryBuilder('r')
+            ->join('r.trajet', 't')
+            ->andWhere('t.date_depart > :now')
+            ->andWhere('r.passager = :user')
+            ->setParameters([
+                'now' => new \DateTime(),
+                'user' => $user,
+            ])
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findAllByUser($user)
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.passager = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
     // /**
     //  * @return Reservation[] Returns an array of Reservation objects
     //  */

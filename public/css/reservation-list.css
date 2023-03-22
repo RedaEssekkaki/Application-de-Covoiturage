@@ -1,0 +1,22 @@
+
+.reservation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.reservation-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+.reservation-info {
+    display: flex;
+    gap: 15px;
+}
+.reservation-actions {
+    display: flex;
+    gap: 10px;
+}

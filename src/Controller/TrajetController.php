@@ -7,6 +7,7 @@ use App\Entity\Reservation;
 use App\Entity\Trajet;
 use App\Form\CommentaireType;
 use App\Form\TrajetType;
+use App\Repository\TrajetRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -33,11 +34,10 @@ class TrajetController extends AbstractController
      * @Route("/trajet", name="trajet.list")
      * * @return Response
      */
-    public function list(): Response
+    public function list(TrajetRepository $trajetRepository): Response
     {
-        $trajets = $this->getDoctrine()->getRepository(Trajet::class)->findAll();
         return $this->render('trajet/list.html.twig', [
-            'trajets' => $trajets,
+            'trajets' => $trajetRepository->findNonExpired(),
         ]);
     }
 
@@ -87,6 +87,7 @@ class TrajetController extends AbstractController
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $trajet->setConducteur($this->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($trajet);
             $em->flush();

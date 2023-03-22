@@ -46,7 +46,14 @@ class TrajetRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
-
+    public function findNonExpired()
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.date_depart > :now')
+            ->setParameter('now', new \DateTime())
+            ->getQuery()
+            ->getResult();
+    }
     // /**
     //  * @return Trajet[] Returns an array of Trajet objects
     //  */

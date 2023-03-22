@@ -9,7 +9,7 @@
 {% block body %}
     <h1>Supprimer la réservation</h1>
     <p>
-        Êtes-vous sûr de vouloir supprimer la réservation pour le trajet #{{ reservation.trajet.id }} ?
+        Êtes-vous sûr de vouloir supprimer la réservation pour le trajet {{ reservation.trajet.getVilleDepart() }} --> {{ reservation.trajet.getVilleDestination() }} ?
     </p>
 
     {{ form_start(form) }}

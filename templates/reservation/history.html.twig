@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block title %}Historique des réservations{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Historique des réservations</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Trajet</th>
+                <th>Date de départ</th>
+                <th>Date d'arrivée</th>
+                <th>Conducteur</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.trajet.villeDepart }} → {{ reservation.trajet.villeDestination }}</td>
+                    <td>{{ reservation.trajet.getDateDepart()|date('d/m/Y H:i') }}</td>
+                    <td>{{ reservation.trajet.getDateArrivee()|date('d/m/Y H:i') }}</td>
+                    <td>{{ reservation.trajet.conducteur.prenom }} {{ reservation.trajet.conducteur.nom }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
