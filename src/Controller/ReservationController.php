@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Reservation;
 use App\Entity\Trajet;
-use App\Form\ReservationType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -47,49 +46,37 @@ class ReservationController extends AbstractController
      * @Route("/reservation/new/{trajet_id}", name="reservation.create", requirements={"trajet_id"="\d+"})
      * @ParamConverter("trajet", options={"id"="trajet_id"})
      * @param Trajet $trajet
-     * @param Request $request
      * @param EntityManagerInterface $entityManager
      * @return Response
      */
-    public function create(Trajet $trajet, Request $request, EntityManagerInterface $entityManager): Response
+    public function create(Trajet $trajet, EntityManagerInterface $entityManager): Response
     {
         $nombrePlacesDisponibles = $trajet->getNombrePlaces();
 
-        $reservation = new Reservation();
-        $reservation->setPassager($this->getUser());
-        $reservation->setTrajet($trajet);
+        if ($nombrePlacesDisponibles > 0) {
+            $reservation = new Reservation();
+            $reservation->setPassager($this->getUser());
+            $reservation->setTrajet($trajet);
 
-        $form = $this->createForm(ReservationType::class, $reservation, [
-            // Passe le nombre de places disponibles au formulaire
-            'nombrePlacesDisponibles' => $nombrePlacesDisponibles,
-        ]);
+            // Met à jour le nombre de places disponibles pour le trajet
+            $trajet->setNombrePlaces($nombrePlacesDisponibles - 1);
 
-        $form->handleRequest($request);
+            // Enregistre la réservation et met à jour le trajet
+            $entityManager->persist($reservation);
+            $entityManager->flush();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            if ($trajet->getNombrePlaces() > 0) {
-                // Met à jour le nombre de places disponibles pour le trajet
-                $trajet->setNombrePlaces($trajet->getNombrePlaces() - $form->get('nombrePlaces')->getData());
+            // Ajoute un message de confirmation
+            $this->addFlash('success', 'Réservation effectuée avec succès.');
 
-                // Enregistre la réservation et met à jour le trajet
-                $entityManager->persist($reservation);
-                $entityManager->flush();
+            // Redirige vers la page de détails de la réservation
+            return $this->redirectToRoute('reservation.show', ['id' => $reservation->getId()]);
+        } else {
+            // Ajoute un message d'erreur si aucune place n'est disponible
+            $this->addFlash('error', 'Aucune place disponible pour ce trajet.');
 
-                // Ajoute un message de confirmation
-                $this->addFlash('success', 'Réservation effectuée avec succès.');
-
-                // Redirige vers la page de détails de la réservation
-                return $this->redirectToRoute('reservation.show', ['id' => $reservation->getId()]);
-            } else {
-                // Ajoute un message d'erreur si aucune place n'est disponible
-                $this->addFlash('error', 'Aucune place disponible pour ce trajet.');
-            }
+            // Redirige vers la page précédente ou une autre page de votre choix
+            return $this->redirectToRoute('trajet.list');
         }
-
-        return $this->render('reservation/create.html.twig', [
-            'form' => $form->createView(),
-            'trajet' => $trajet
-        ]);
     }
 
 

@@ -23,7 +23,7 @@
             <li><a href="{{ path('trajet.list') }}">Trajets</a></li>
             <li><a href="{{ path('trajet.create') }}">Offrir un trajet</a></li>
             <li><a href="{{ path('reservation.list') }}">Réservations</a></li>
-            <li><a href="">Profil</a></li>
+            <li><a href="{{ path('profile') }}">Profil</a></li>
             {% if app.user %}
                 <li class="username">Bonjour, {{ app.user.prenom }}</li>
                 <a class="nav-item" href="{{ path('app_logout') }}">Se déconnecter</a>

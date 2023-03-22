@@ -1,0 +1,36 @@
+{# templates/profile/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil de {{ user.prenom }} {{ user.nom }}{% endblock %}
+
+{% block body %}
+    <h1>Profil de {{ user.prenom }} {{ user.nom }}</h1>
+
+    <table class="table">
+        <tr>
+            <th>Email</th>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <th>Téléphone</th>
+            <td>{{ user.telephone }}</td>
+        </tr>
+        <tr>
+            <th>Nombre de trajets</th>
+            <td>{{ user.trajets|length }}</td>
+        </tr>
+        <tr>
+            <th>Nombre de réservations</th>
+            <td>{{ user.reservations|length }}</td>
+        </tr>
+        <tr>
+            <th>Nombre de commentaires</th>
+            <td>{{ user.commentaires|length }}</td>
+        </tr>
+        <tr>
+            <th>Notes reçues</th>
+            <td>{{ user.getNotesRecues()|length }}</td>
+        </tr>
+    </table>
+{% endblock %}

@@ -26,7 +26,7 @@ class UserFixtures extends Fixture
         $user1->setNom('Doe');
         $user1->setPrenom('John');
         $user1->setEmail("test@gmail.com")
-            ->setRoles(["ROLE_USER"])
+            ->setRoles(["ROLE_USER,ROLE_ADMIN"])
             ->setMotDePasse($this->passwordEncoder->encodePassword(
                 $user1, 'test'
             ));

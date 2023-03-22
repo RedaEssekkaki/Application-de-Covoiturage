@@ -6,24 +6,51 @@
 {% endblock %}
 {% block body %}
     <div class="container">
-        <h2>{{ trajet.villeDepart }} &#x2192; {{ trajet.villeDestination }}</h2>
+        <h2>Ville de départ : {{ trajet.villeDepart }} </h2>
+        <h2>Ville de destination : {{ trajet.villeDestination }}</h2>
         <div class="trajet-card">
             <div class="trajet-info">
                 <div class="trajet-location">
                     <h3>{{ trajet.villeDepart }} &#x2192; {{ trajet.villeDestination }}</h3>
                 </div>
                 <div class="trajet-dates">
-                    <p>Départ : {{ trajet.dateDepart|date('d/m/Y H:i') }}</p>
-                    <p>Arrivée : {{ trajet.dateArrivee|date('d/m/Y H:i') }}</p>
+                    <p>
+                        <strong>Départ :</strong>
+                        <span class="date">{{ trajet.dateDepart|date('d/m/Y') }}</span>
+                        <span class="time">{{ trajet.dateDepart|date('H:i') }}</span>
+                    </p>
+                    <p>
+                        <strong>Arrivée :</strong>
+                        <span class="date">{{ trajet.dateArrivee|date('d/m/Y') }}</span>
+                        <span class="time">{{ trajet.dateArrivee|date('H:i') }}</span>
+                    </p>
                 </div>
                 <div class="trajet-places">
                     <p>{{ trajet.nombrePlaces }} places disponibles</p>
                     <p class="trajet-conducteur">Conducteur : {{ trajet.conducteur.prenom }} {{ trajet.conducteur.nom }}</p>
                 </div>
-                <div class = "reserver">
+                <div class="reserver">
                     <a href="{{ path('reservation.create', {'trajet_id': trajet.id}) }}" class="btn btn-primary">Réserver</a>
                 </div>
             </div>
         </div>
+
+        {# Display existing comments #}
+        <h3>Commentaires</h3>
+        {% for comment in trajet.commentaires %}
+            <div class="comment">
+                <strong>{{ comment.user.nom }} {{ comment.user.prenom }}</strong>
+                <p>{{ comment.contenu }}</p>
+            </div>
+        {% endfor %}
+
+        {# Display the form for adding a comment if the user has a reservation and the trip date has passed #}
+        {% if app.user and userHasReservation and tripDatePassed %}
+            <h3>Poster un commentaire</h3>
+            {{ form_start(form, {'action': path('post_comment', {'id': trajet.id})}) }}
+            {{ form_widget(form) }}
+            <button class="btn btn-primary" type="submit">Ajouter un commentaire</button>
+            {{ form_end(form) }}
+        {% endif %}
     </div>
 {% endblock %}

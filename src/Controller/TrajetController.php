@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Commentaire;
+use App\Entity\Reservation;
 use App\Entity\Trajet;
+use App\Form\CommentaireType;
 use App\Form\TrajetType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class TrajetController extends AbstractController
 {
@@ -45,8 +49,20 @@ class TrajetController extends AbstractController
      * */
     public function show(Trajet $trajet) : Response
     {
+        $userReservation = $this->getDoctrine()
+            ->getRepository(Reservation::class)
+            ->findOneBy(['trajet' => $trajet, 'passager' => $this->getUser()]);
+
+        $userHasReservation = $userReservation !== null;
+        $tripDatePassed = $trajet->getDateDepart() <= new \DateTime();
+
+        $form = $this->createForm(CommentaireType::class);
+
         return $this->render('trajet/show.html.twig', [
-            'trajet' => $trajet
+            'trajet' => $trajet,
+            'form' => $form->createView(),
+            'userHasReservation' => $userHasReservation,
+            'tripDatePassed' => $tripDatePassed,
         ]);
     }
 
@@ -142,6 +158,76 @@ class TrajetController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/trajet/{id}/comment", name="trajet_add_comment", methods={"POST"})
+     */
+    public function addComment(Trajet $trajet, Request $request, UserInterface $user): Response
+    {
+        $comment = new Commentaire();
+        $form = $this->createForm(CommentaireType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setUser($user);
+            $comment->setTrajet($trajet);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('trajet.show', ['id' => $trajet->getId()]);
+        }
+
+        return $this->render('trajet/show.html.twig', [
+            'trajet' => $trajet,
+            'comment_form' => $form->createView(),
+        ]);
+    }
+    /**
+     * @Route("/trajet/{id}/comment", name="post_comment", methods={"POST"})
+     */
+    public function postComment(Request $request, Trajet $trajet): Response
+    {
+        // Check if the user has a reservation for the trip
+        $userReservation = $this->getDoctrine()
+            ->getRepository(Reservation::class)
+            ->findOneBy(['trajet' => $trajet, 'passager' => $this->getUser()]);
+
+        if (!$userReservation) {
+            $this->addFlash('error', 'Vous ne pouvez pas commenter un trajet que vous n\'avez pas réservé.');
+            return $this->redirectToRoute('trajet.show', ['id' => $trajet->getId()]);
+        }
+
+        // Check if the trip date has passed
+        if ($trajet->getDateDepart() > new \DateTime()) {
+            $this->addFlash('error', 'Vous ne pouvez commenter un trajet qu\'après sa date.');
+            return $this->redirectToRoute('trajet.show', ['id' => $trajet->getId()]);
+        }
+
+        $comment = new Commentaire();
+        $form = $this->createForm(CommentaireType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setUser($this->getUser());
+            $comment->setTrajet($trajet);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Votre commentaire a été ajouté avec succès.');
+
+            return $this->redirectToRoute('trajet.show', ['id' => $trajet->getId()]);
+        }
+
+        return $this->render('trajet/show.html.twig', [
+            'trajet' => $trajet,
+            'form' => $form->createView(),
+        ]);
+    }
+
+
 
 
 

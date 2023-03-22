@@ -17,7 +17,6 @@
             <th>Ville de destination</th>
             <th>Date de départ</th>
             <th>Date d'arrivée</th>
-            <th>Nombre de places</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -32,7 +31,6 @@
                     <td>{{ reservation.trajet.getVilleDestination() }}</td>
                     <td>{{ reservation.trajet.getDateDepart()|date('d/m/Y H:i') }}</td>
                     <td>{{ reservation.trajet.getDateArrivee()|date('d/m/Y H:i') }}</td>
-                    <td>{{ reservation.trajet.getNombrePlaces() }}</td>
                     <td>
                         <a href="{{ path('reservation.show', {'id': reservation.id}) }}" class="btn btn-info">Voir</a>
                         {% if app.user == reservation.passager or isAdmin %}

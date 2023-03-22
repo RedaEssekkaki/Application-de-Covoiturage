@@ -1,65 +1,75 @@
-/* Général */
+/* public/css/trajet.css */
+
 body {
     font-family: Arial, sans-serif;
 }
 
 .container {
-
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-h2 {
-    font-family: Corbel;
-    margin-bottom: 25px;
-    font-weight: bold;
-    text-align: center;
-}
-
-/* Cartes de trajets */
 .trajet-card {
     display: flex;
-    justify-content: space-between;
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
+    flex-direction: column;
+    background-color: #f2f2f2;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
-    text-align: right;
 }
 
 .trajet-info {
     display: flex;
-    flex-direction: column;
-    flex: 1; /* Ajouté pour répartir l'espace */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
-.trajet-location {
-    font-weight: bold;
-    font-size: 1.2em;
-    font-family: Corbel;
-    margin-right: 10%;
-}
-
+.trajet-location,
 .trajet-dates,
 .trajet-places {
-    font-size: 0.9em;
-    margin-top: 8px;
-    margin-right: 10%;
+    flex-grow: 1;
 }
 
-.trajet-conducteur {
-    font-size: 0.9em;
-    text-align: right; /* Ajouté pour aligner le texte à droite */
+.trajet-dates p {
+    margin: 0;
+    padding: 5px 0;
 }
 
-/* Responsive */
-@media screen and (max-width: 767px) {
-    .trajet-card {
-        flex-direction: column;
-        text-align: left;
-    }
+.reserver {
+    text-align: center;
+}
 
-    .trajet-conducteur {
-        margin-top: 10px;
-        text-align: left; /* Ajouté pour rétablir l'alignement à gauche sur les petits écrans */
-    }
+.comment {
+    background-color: #e6e6e6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.comment strong {
+    display: block;
+    margin-bottom: 5px;
+}
+.trajet-dates p {
+    margin: 0;
+    padding: 5px 0;
+}
+
+.trajet-dates strong {
+    font-weight: bold;
+}
+
+.date {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin-right: 5px;
+}
+
+.time {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #555;
 }

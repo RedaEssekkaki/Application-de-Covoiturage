@@ -174,7 +174,6 @@ class Trajet
             $this->commentaires[] = $commentaire;
             $commentaire->setTrajet($this);
         }
-
         return $this;
     }
 

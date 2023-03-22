@@ -42,7 +42,7 @@ class RegistrationController extends AbstractController
                 $user,
                 $request,
                 $authenticator,
-                'main' // firewall name in security.yaml
+                'trajet' // firewall name in security.yaml
             );
         }
 
