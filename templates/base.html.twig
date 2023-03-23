@@ -38,6 +38,11 @@
                 <li><a href="{{ path('trajet.create') }}">{% trans %}Offrir un trajet{% endtrans %}</a></li>
                 <li><a href="{{ path('reservation.list') }}">{% trans %}Réservations{% endtrans %}</a></li>
                 <li><a href="{{ path('profile') }}">{% trans %}Profil{% endtrans %}</a></li>
+                {% for locale in locales %}
+                    {% if locale != app.request.locale %}
+                        <a href="{{ path('change_locale', {'locale': locale}) }}">{{ locale }}</a>
+                    {% endif %}
+                {% endfor %}
                 {% if app.user %}
                     <li class="username">Bonjour, {{ app.user.prenom }}</li>
                     <li><a href="{{ path('app_logout') }}">{% trans %}Se déconnecter{% endtrans %}</a></li>
