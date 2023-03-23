@@ -62,5 +62,11 @@ class TrajetFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($trajet4);
 
         $manager->flush();
+        $this->addReference("trajet1", $trajet1);
+        $this->addReference("trajet2", $trajet2);
+        $this->addReference("trajet3", $trajet3);
+        $this->addReference("trajet4", $trajet4);
+
+
     }
 }

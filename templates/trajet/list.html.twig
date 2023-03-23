@@ -30,7 +30,7 @@
                             <p>{{ trajet.nombrePlaces }} {% trans %}places disponibles{% endtrans %}</p>
                         </div>
                         <div class="trajet-conducteur">
-                            <p>{% trans %}Conducteur{% endtrans %} : {{ trajet.conducteur.prenom }} {{ trajet.conducteur.nom }}</p>
+                            <p>{% trans %}Conducteur{% endtrans %} : {{ trajet.conducteur.prenom }} {{ trajet.conducteur.nom }} ({% trans %}Note moyenne{% endtrans %} : {{ trajet.conducteur.getNoteMoyenne()|default('-') }}/5)</p>
                         </div>
                     </div>
                 </div>

@@ -351,4 +351,20 @@ class User implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
+    public function getNoteMoyenne(): float
+    {
+        $totalNotes = 0;
+        $nbNotes = count($this->notes_recues);
+
+        if ($nbNotes === 0) {
+            return 0;
+        }
+
+        foreach ($this->notes_recues as $note) {
+            $totalNotes += $note->getValeur();
+        }
+
+        return round($totalNotes / $nbNotes, 1);
+    }
+
 }
