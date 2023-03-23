@@ -1,4 +1,7 @@
 
+.container{
+    padding-top: 100px;
+}
 
 .reservation-list {
     display: flex;

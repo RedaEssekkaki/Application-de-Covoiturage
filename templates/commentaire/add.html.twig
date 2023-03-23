@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Ajouter un commentaire{% endtrans %}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+{% endblock %}
+{% block body %}
+    <h1>{% trans %}Ajouter un commentaire{% endtrans %}</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    <button type="submit" class="btn btn-primary">{% trans %}Ajouter{% endtrans %}</button>
+    {{ form_end(form) }}
+{% endblock %}

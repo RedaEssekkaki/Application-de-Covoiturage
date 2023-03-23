@@ -43,6 +43,24 @@ class TrajetFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($trajet2);
 
 
+        $trajet3 = new Trajet();
+        $trajet3->setVilleDepart('Bordeaux');
+        $trajet3->setVilleDestination('Nantes');
+        $trajet3->setDateDepart((new \DateTime())->modify('+2 days')->setTime(10, 0, 0));
+        $trajet3->setDateArrivee((new \DateTime())->modify('+2 days')->setTime(14, 0, 0));
+        $trajet3->setNombrePlaces(4);
+        $trajet3->setConducteur($manager->merge($this->getReference("user5")));
+        $manager->persist($trajet3);
+
+        $trajet4 = new Trajet();
+        $trajet4->setVilleDepart('Lille');
+        $trajet4->setVilleDestination('Strasbourg');
+        $trajet4->setDateDepart((new \DateTime())->modify('+3 days')->setTime(9, 0, 0));
+        $trajet4->setDateArrivee((new \DateTime())->modify('+3 days')->setTime(13, 0, 0));
+        $trajet4->setNombrePlaces(1);
+        $trajet4->setConducteur($manager->merge($this->getReference("user4")));
+        $manager->persist($trajet4);
+
         $manager->flush();
     }
 }

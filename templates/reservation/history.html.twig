@@ -5,6 +5,15 @@
     <link rel="stylesheet" href="{{ asset('css/reservation-history.css') }}">
 {% endblock %}
 {% block body %}
+
+    {% for message_type, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message_type }} alert-dismissible fade show" role="alert">
+                {{ message|trans }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endfor %}
     <div class="container">
         <h1>{% trans %}Historique des réservations{% endtrans %}</h1>
         <table class="table">

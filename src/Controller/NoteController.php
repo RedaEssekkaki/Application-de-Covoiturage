@@ -24,12 +24,6 @@ class NoteController extends AbstractController
         // Trouver la réservation correspondante
         $reservation = $reservationRepository->findOneBy(['trajet' => $trajetId, 'passager' => $user]);
 
-        // Vérifier si la réservation existe et que l'utilisateur connecté est le passager
-        if (!$reservation) {
-            $this->addFlash('error', 'Vous ne pouvez pas ajouter une note pour ce trajet.');
-            return $this->redirectToRoute('reservation.history');
-        }
-
         // Vérifier si une note existe déjà pour cette réservation
         $existingNote = $noteRepository->findOneBy(['conducteur' => $reservation->getTrajet()->getConducteur(), 'passager' => $user]);
 

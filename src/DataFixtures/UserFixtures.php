@@ -47,9 +47,50 @@ class UserFixtures extends Fixture
         // flush changes to database
         $manager->flush();
 
+
+        // Utilisateur 3
+        $user3 = new User();
+        $user3->setEmail('paul.dupont@example.com');
+        $user3->setTelephone('0612345678');
+        $user3->setNom('Dupont');
+        $user3->setPrenom('Paul');
+        $user3->setMotDePasse($this->passwordEncoder->encodePassword(
+            $user3, 'test'
+        ));
+        $manager->persist($user3);
+
+        // Utilisateur 4
+        $user4 = new User();
+        $user4->setEmail('marie.durand@example.com');
+        $user4->setTelephone('0623456789');
+        $user4->setNom('Durand');
+        $user4->setPrenom('Marie');
+        $user4->setMotDePasse($this->passwordEncoder->encodePassword(
+            $user4, 'test'
+        ));
+        $manager->persist($user4);
+
+        // Utilisateur 5
+        $user5 = new User();
+        $user5->setEmail('alice.martin@example.com');
+        $user5->setTelephone('0634567890');
+        $user5->setNom('Martin');
+        $user5->setPrenom('Alice');
+        $user5->setMotDePasse($this->passwordEncoder->encodePassword(
+            $user5, 'test'
+        ));
+        $manager->persist($user5);
+
+        // Enregistrement des modifications
+        $manager->flush();
+
+
         // set reference to use in other fixtures
         $this->addReference("user1", $user1);
         $this->addReference("user2", $user2);
+        $this->addReference("user3", $user3);
+        $this->addReference("user4", $user4);
+        $this->addReference("user5", $user5);
     }
 }
 

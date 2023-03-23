@@ -1,0 +1,7 @@
+
+
+
+{{ form_start(form, {'action': path('post_comment', {'id': trajet.id})}) }}
+{{ form_widget(form) }}
+<button class="btn btn-primary" type="submit">{% trans %}Ajouter un commentaire{% endtrans %}</button>
+{{ form_end(form) }}

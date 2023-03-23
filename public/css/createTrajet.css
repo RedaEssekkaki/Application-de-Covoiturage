@@ -1,6 +1,13 @@
-/* Général */
+
+.container{
+    padding-top: 100px;
+    margin: 0 auto;
+}
+
+
 body {
     font-family: Arial, sans-serif;
+    background-color: white;
 }
 
 .container {

@@ -160,31 +160,25 @@ class TrajetController extends AbstractController
         ]);
     }
 
+
     /**
-     * @Route("/trajet/{id}/comment", name="trajet_add_comment", methods={"POST"})
+     * @Route("/trajet/{id}/comment", name="get_comment_form", methods={"GET"})
      */
-    public function addComment(Trajet $trajet, Request $request, UserInterface $user): Response
+    public function getCommentForm(Trajet $trajet): Response
     {
-        $comment = new Commentaire();
-        $form = $this->createForm(CommentaireType::class, $comment);
-        $form->handleRequest($request);
+        $form = $this->createForm(CommentaireType::class);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $comment->setUser($user);
-            $comment->setTrajet($trajet);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($comment);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('trajet.show', ['id' => $trajet->getId()]);
-        }
-
-        return $this->render('trajet/show.html.twig', [
+        return $this->render('commentaire/comment_form.html.twig', [
             'trajet' => $trajet,
-            'comment_form' => $form->createView(),
+            'form' => $form->createView(),
         ]);
     }
+
+
+
     /**
+     * Poster un commmentaire
+     * @param Request
      * @Route("/trajet/{id}/comment", name="post_comment", methods={"POST"})
      */
     public function postComment(Request $request, Trajet $trajet): Response
@@ -199,7 +193,7 @@ class TrajetController extends AbstractController
             return $this->redirectToRoute('trajet.show', ['id' => $trajet->getId()]);
         }
 
-        // Check if the trip date has passed
+        // Controle que la date soit dans le passée
         if ($trajet->getDateDepart() > new \DateTime()) {
             $this->addFlash('error', 'Vous ne pouvez commenter un trajet qu\'après sa date.');
             return $this->redirectToRoute('trajet.show', ['id' => $trajet->getId()]);
