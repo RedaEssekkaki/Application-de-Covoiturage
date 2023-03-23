@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Offrir un nouveau trajet{% endblock %}
+{% block title %}{% trans %}Offrir un nouveau trajet{% endtrans %}{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/createTrajet.css') }}"> <!-- ajouter un home.css -->
@@ -25,7 +25,7 @@
 
 {% block body %}
     <div class="container">
-        <h1>Créer un nouveau trajet</h1>
+        <h1>{% trans %}Créer un nouveau trajet{% endtrans %}</h1>
         {{ form_start(form) }}
         <div class="form-group">
             {{ form_label(form.villeDepart, 'Ville de départ') }}

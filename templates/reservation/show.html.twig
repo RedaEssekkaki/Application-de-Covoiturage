@@ -2,43 +2,43 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Détails de la réservation{% endblock %}
+{% block title %}{% trans %}Détails de la réservation{% endtrans %}{% endblock %}
         {% block stylesheets %}
             {{ parent() }}
             <link rel="stylesheet" href="{{ asset('css/reservation.css') }}">
         {% endblock %}
 {% block body %}
-    <h1>Détails de la réservation</h1>
+    <h1>{% trans %}Détails de la réservation{% endtrans %}</h1>
 
     <table class="table">
         <tr>
-            <th>Passager</th>
+            <th>{% trans %}Passager{% endtrans %}</th>
             <td>{{ reservation.passager.username }}</td>
         </tr>
         <tr>
-            <th>Ville de départ</th>
+            <th>{% trans %}Ville de départ{% endtrans %}</th>
             <td>{{ reservation.trajet.getVilleDepart() }}</td>
         </tr>
         <tr>
-            <th>Ville de destination</th>
+            <th>{% trans %}Ville de destination{% endtrans %}</th>
             <td>{{ reservation.trajet.getVilleDestination() }}</td>
         </tr>
         <tr>
-            <th>Date de départ</th>
+            <th>{% trans %}Date de départ{% endtrans %}</th>
             <td>{{ reservation.trajet.getDateDepart()|date('d/m/Y H:i') }}</td>
         </tr>
         <tr>
-            <th>Date d'arrivée</th>
+            <th>{% trans %}Date d'arrivée{% endtrans %}</th>
             <td>{{ reservation.trajet.getDateArrivee()|date('d/m/Y H:i') }}</td>
         </tr>
         <tr>
-            <th>Nombre de places</th>
+            <th>{% trans %}Nombre de places{% endtrans %}</th>
             <td>{{ reservation.trajet.getNombrePlaces() }}</td>
         </tr>
     </table>
 
-    <a href="{{ path('reservation.list') }}" class="btn btn-primary">Retour à la liste des réservations</a>
+    <a href="{{ path('reservation.list') }}" class="btn btn-primary">{% trans %}Retour à la liste des réservations{% endtrans %}</a>
     {% if app.user == reservation.passager or 'ROLE_ADMIN' in app.user.roles %}
-        <a href="{{ path('reservation.delete', {'id': reservation.id}) }}" class="btn btn-danger">Supprimer</a>
+        <a href="{{ path('reservation.delete', {'id': reservation.id}) }}" class="btn btn-danger">{% trans %}Supprimer{% endtrans %}</a>
     {% endif %}
 {% endblock %}

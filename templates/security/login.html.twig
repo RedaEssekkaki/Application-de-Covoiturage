@@ -30,7 +30,7 @@
 
         <div class="checkbox mb-3">
             <label>
-                <input type="checkbox" name="_remember_me"> Se souvenir
+                <input type="checkbox" name="_remember_me"> {% trans %}Se souvenir{% endtrans %}
             </label>
         </div>
 
@@ -39,7 +39,7 @@
         </button>
         <!-- Ajout du lien vers la page d'inscription -->
         <div class="mt-3">
-            <p>Vous n'avez pas de compte ? <a href="{{ path('app_register') }}">Inscrivez-vous</a></p>
+            <p>{% trans %}Vous n'avez pas de compte{% endtrans %} ? <a href="{{ path('app_register') }}">{% trans %}Inscrivez-vous{% endtrans %}</a></p>
         </div>
     </form>
 {% endblock %}

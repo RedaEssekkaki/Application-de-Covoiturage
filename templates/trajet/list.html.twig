@@ -1,14 +1,17 @@
 {% extends 'base.html.twig' %}
-{% block title %}Liste des trajets{% endblock %}
+
+{% block title %}{% trans %}Liste des trajets{% endtrans %}{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/listeTrajet.css') }}"> <!-- ajouter un trajet.css -->
+    <link rel="stylesheet" href="{{ asset('css/listeTrajet.css') }}">
 {% endblock %}
+
 {% block body %}
     <div class="container">
-        <h1>Trajets disponibles</h1>
+        <h1>{% trans %}Trajets disponibles{% endtrans %}</h1>
         {% for trajet in trajets %}
-            <a href="{{ path('trajet.show', {id: trajet.id}) }}" class="trajet-link"> <!-- ajout de la classe trajet-link -->
+            <a href="{{ path('trajet.show', {id: trajet.id}) }}" class="trajet-link">
                 <div class="trajet-card">
                     <div class="trajet-locations">
                         <div class="trajet-location-depart">
@@ -20,14 +23,14 @@
                     </div>
                     <div class="trajet-details">
                         <div class="trajet-dates">
-                            <p>Départ : {{ trajet.dateDepart|date('d/m/Y H:i') }}</p>
-                            <p>Arrivée : {{ trajet.dateArrivee|date('d/m/Y H:i') }}</p>
+                            <p>{% trans %}Départ{% endtrans %} : {{ trajet.dateDepart|date('d/m/Y H:i') }}</p>
+                            <p>{% trans %}Arrivée{% endtrans %} : {{ trajet.dateArrivee|date('d/m/Y H:i') }}</p>
                         </div>
                         <div class="trajet-places">
-                            <p>{{ trajet.nombrePlaces }} places disponibles</p>
+                            <p>{{ trajet.nombrePlaces }} {% trans %}places disponibles{% endtrans %}</p>
                         </div>
                         <div class="trajet-conducteur">
-                            <p>Conducteur : {{ trajet.conducteur.prenom }} {{ trajet.conducteur.nom }}</p>
+                            <p>{% trans %}Conducteur{% endtrans %} : {{ trajet.conducteur.prenom }} {{ trajet.conducteur.nom }}</p>
                         </div>
                     </div>
                 </div>

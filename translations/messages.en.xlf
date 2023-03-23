@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="UzFhc1Y" resname="Accueil">
+        <source>Accueil</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="fdn8xZ9" resname="FLIXCAR">
+        <source>FLIXCAR</source>
+        <target>FLIXCAR</target>
+      </trans-unit>
+      <trans-unit id="XmQCP6N" resname="Trajets">
+        <source>Trajets</source>
+        <target>Rides</target>
+      </trans-unit>
+      <trans-unit id="9a4dIza" resname="Offrir un trajet">
+        <source>Offrir un trajet</source>
+        <target>Post a ride</target>
+      </trans-unit>
+      <trans-unit id="nMJWozX" resname="Réservations">
+        <source>Réservations</source>
+        <target>Bookings</target>
+      </trans-unit>
+      <trans-unit id="4mfTQ4I" resname="Profil">
+        <source>Profil</source>
+        <target>Profile</target>
+      </trans-unit>
+      <trans-unit id="sYru0ag" resname="Se déconnecter">
+        <source>Se déconnecter</source>
+        <target>Sign out</target>
+      </trans-unit>
+      <trans-unit id="CsPSyzA" resname="Se connecter">
+        <source>Se connecter</source>
+        <target>Log in</target>
+      </trans-unit>
+      <trans-unit id="NQKmenf" resname="Liste des trajets">
+        <source>Liste des trajets</source>
+        <target>List of trips</target>
+      </trans-unit>
+      <trans-unit id="I51GSWm" resname="Trajets disponibles">
+        <source>Trajets disponibles</source>
+        <target>Available trips</target>
+      </trans-unit>
+      <trans-unit id="oPQQ5tl" resname="Départ">
+        <source>Départ</source>
+        <target>Departure</target>
+      </trans-unit>
+      <trans-unit id="u5DhXCc" resname="Arrivée">
+        <source>Arrivée</source>
+        <target>Arrival</target>
+      </trans-unit>
+      <trans-unit id="XMhaX6n" resname="places disponibles">
+        <source>places disponibles</source>
+        <target>available spots</target>
+      </trans-unit>
+      <trans-unit id="Jn447Px" resname="Conducteur">
+        <source>Conducteur</source>
+        <target>Driver</target>
+      </trans-unit>
+      <trans-unit id="PmGS.s6" resname="Afficher Trajet">
+        <source>Afficher Trajet</source>
+        <target>Show Trip</target>
+      </trans-unit>
+      <trans-unit id="C8Im7Cn" resname="Ville de départ">
+        <source>Ville de départ</source>
+        <target>Departure City</target>
+      </trans-unit>
+      <trans-unit id="Z8cA_4v" resname="Ville de destination">
+        <source>Ville de destination</source>
+        <target>Destination City</target>
+      </trans-unit>
+      <trans-unit id="Qjv7KZi" resname="Départ :">
+        <source>Départ :</source>
+        <target>Departure :</target>
+      </trans-unit>
+      <trans-unit id="m2zi65v" resname="Arrivée :">
+        <source>Arrivée :</source>
+        <target>Arrival :</target>
+      </trans-unit>
+      <trans-unit id="yfa1J8N" resname="Réserver">
+        <source>Réserver</source>
+        <target>Book</target>
+      </trans-unit>
+      <trans-unit id="9516ize" resname="Commentaires">
+        <source>Commentaires</source>
+        <target>Comments</target>
+      </trans-unit>
+      <trans-unit id="R69wCAD" resname="Poster un commentaire">
+        <source>Poster un commentaire</source>
+        <target>Post a comment</target>
+      </trans-unit>
+      <trans-unit id="goxluGo" resname="Ajouter un commentaire">
+        <source>Ajouter un commentaire</source>
+        <target>Add a comment</target>
+      </trans-unit>
+      <trans-unit id="rd7Pli0" resname="Bienvenue sur notre plateforme de covoiturage">
+        <source>Bienvenue sur notre plateforme de covoiturage</source>
+        <target>Welcome to our carpooling platform</target>
+      </trans-unit>
+      <trans-unit id="_5Wrked" resname="Rejoignez notre communauté et partagez vos trajets en toute simplicité.">
+        <source>Rejoignez notre communauté et partagez vos trajets en toute simplicité.</source>
+        <target>Join our community and share your trips with ease</target>
+      </trans-unit>
+      <trans-unit id="z7GsDIB" resname="Inscription">
+        <source>Inscription</source>
+        <target>Registration</target>
+      </trans-unit>
+      <trans-unit id="YdaVBBA" resname="Connexion">
+        <source>Connexion</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="q0qPLUq" resname="Modifier le trajet">
+        <source>Modifier le trajet</source>
+        <target>Edit a trip</target>
+      </trans-unit>
+      <trans-unit id="Q2cx36K" resname="Supprimer le trajet">
+        <source>Supprimer le trajet</source>
+        <target>Delete the trip</target>
+      </trans-unit>
+      <trans-unit id="cRmsi51" resname="le trajet">
+        <source>le trajet</source>
+        <target>the trip</target>
+      </trans-unit>
+      <trans-unit id="Rq05Fva" resname="Annuler">
+        <source>Annuler</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="lpzL089" resname="Email">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="zExCS1c" resname="Téléphone">
+        <source>Téléphone</source>
+        <target>Phone</target>
+      </trans-unit>
+      <trans-unit id="otZfRTk" resname="Nombre de trajets">
+        <source>Nombre de trajets</source>
+        <target>Number of trips</target>
+      </trans-unit>
+      <trans-unit id="YOT0iBF" resname="Nombre de réservations">
+        <source>Nombre de réservations</source>
+        <target>Number of reservations</target>
+      </trans-unit>
+      <trans-unit id="sgibntS" resname="Nombre de commentaires">
+        <source>Nombre de commentaires</source>
+        <target>Number of comments</target>
+      </trans-unit>
+      <trans-unit id="H5qku6D" resname="Notes reçues">
+        <source>Notes reçues</source>
+        <target>Received ratings</target>
+      </trans-unit>
+      <trans-unit id="AirR0ub" resname="Mes trajets proposés">
+        <source>Mes trajets proposés</source>
+        <target>My offered trips</target>
+      </trans-unit>
+      <trans-unit id="IumSuye" resname="Editer">
+        <source>Editer</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="Xl0CFs4" resname="Supprimer">
+        <source>Supprimer</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="5LiUp6X" resname="Aucun trajet proposé pour le moment">
+        <source>Aucun trajet proposé pour le moment</source>
+        <target>No trips offered at the moment</target>
+      </trans-unit>
+      <trans-unit id="IWv472v" resname="Mes notes reçues">
+        <source>Mes notes reçues</source>
+        <target>My received ratings</target>
+      </trans-unit>
+      <trans-unit id="pG_tF71" resname="Aucune note reçue pour le moment.">
+        <source>Aucune note reçue pour le moment.</source>
+        <target>No ratings received yet.</target>
+      </trans-unit>
+      <trans-unit id="x5Pg2aH" resname="Registration">
+        <source>Registration</source>
+        <target>Registration</target>
+      </trans-unit>
+      <trans-unit id="PCX0_17" resname="S'inscrire">
+        <source>S'inscrire</source>
+        <target>Sign up</target>
+      </trans-unit>
+      <trans-unit id="X5DTeZw" resname="Supprimer une réservation">
+        <source>Supprimer une réservation</source>
+        <target>Delete a reservation</target>
+      </trans-unit>
+      <trans-unit id="C7xVEqf" resname="Supprimer la réservation">
+        <source>Supprimer la réservation</source>
+        <target>Delete the reservation</target>
+      </trans-unit>
+      <trans-unit id="emjI5L1" resname="Êtes-vous sûr de vouloir supprimer la réservation pour le trajet">
+        <source>Êtes-vous sûr de vouloir supprimer la réservation pour le trajet</source>
+        <target>Are you sure you want to delete the reservation for the trip</target>
+      </trans-unit>
+      <trans-unit id="Bwe735z" resname="Historique des réservations">
+        <source>Historique des réservations</source>
+        <target>Reservation History</target>
+      </trans-unit>
+      <trans-unit id="M9sh2z." resname="Trajet">
+        <source>Trajet</source>
+        <target>Trip</target>
+      </trans-unit>
+      <trans-unit id="VaDcAOj" resname="Date de départ">
+        <source>Date de départ</source>
+        <target>Departure date</target>
+      </trans-unit>
+      <trans-unit id="f3UWEw8" resname="Date d'arrivée">
+        <source>Date d'arrivée</source>
+        <target>Arrival date</target>
+      </trans-unit>
+      <trans-unit id="2NosSd8" resname="Note">
+        <source>Note</source>
+        <target>Note</target>
+      </trans-unit>
+      <trans-unit id="wApIF6Y" resname="Sélectionnez une note">
+        <source>Sélectionnez une note</source>
+        <target>Select a note</target>
+      </trans-unit>
+      <trans-unit id="SNPoFla" resname="Commentaire">
+        <source>Commentaire</source>
+        <target>Comment</target>
+      </trans-unit>
+      <trans-unit id="iFletck" resname="Ajouter une note">
+        <source>Ajouter une note</source>
+        <target>Add a note</target>
+      </trans-unit>
+      <trans-unit id="xdsYRSq" resname="Liste des réservations">
+        <source>Liste des réservations</source>
+        <target>Reservations list</target>
+      </trans-unit>
+      <trans-unit id="nAW2lmA" resname="Passager">
+        <source>Passager</source>
+        <target>Passenger</target>
+      </trans-unit>
+      <trans-unit id="zMqxP1H" resname="Aucune réservation trouvée.">
+        <source>Aucune réservation trouvée.</source>
+        <target>No reservation found.</target>
+      </trans-unit>
+      <trans-unit id="lBMUcJZ" resname="Détails de la réservation">
+        <source>Détails de la réservation</source>
+        <target>Reservation details</target>
+      </trans-unit>
+      <trans-unit id="dG7r3SA" resname="Nombre de places">
+        <source>Nombre de places</source>
+        <target>Number of places</target>
+      </trans-unit>
+      <trans-unit id="yOx5nhd" resname="Retour à la liste des réservations">
+        <source>Retour à la liste des réservations</source>
+        <target>Back to the Reservations list</target>
+      </trans-unit>
+      <trans-unit id="Q73GOfO" resname="Se souvenir">
+        <source>Se souvenir</source>
+        <target>Remember me</target>
+      </trans-unit>
+      <trans-unit id="IA5.EEa" resname="Vous n'avez pas de compte">
+        <source>Vous n'avez pas de compte</source>
+        <target>You do not have an account</target>
+      </trans-unit>
+      <trans-unit id="5OesQ5R" resname="Inscrivez-vous">
+        <source>Inscrivez-vous</source>
+        <target>Register</target>
+      </trans-unit>
+      <trans-unit id="EKfGRm8" resname="Offrir un nouveau trajet">
+        <source>Offrir un nouveau trajet</source>
+        <target>Offer a new journey</target>
+      </trans-unit>
+      <trans-unit id="0HqF_ME" resname="Créer un nouveau trajet">
+        <source>Créer un nouveau trajet</source>
+        <target>Create a new journey</target>
+      </trans-unit>
+      <trans-unit id="GMLLKNL" resname="Voir l'historique des réservations">
+        <source>Voir l'historique des réservations</source>
+        <target>See Reservation History</target>
+      </trans-unit>
+      <trans-unit id="F_ruSJs" resname="Détails">
+        <source>Détails</source>
+        <target>Details</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

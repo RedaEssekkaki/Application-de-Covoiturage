@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Registration{% endblock %}
+{% block title %}{% trans %}Registration{% endtrans %}{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/inscription.css') }}">
 {% endblock %}
 {% block body %}
-    <h1>S'inscrire</h1>
+    <h1>{% trans %}S'inscrire{% endtrans %}</h1>
     <div class="form-group">
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}

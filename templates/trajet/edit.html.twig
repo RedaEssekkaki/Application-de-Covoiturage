@@ -23,7 +23,7 @@
 {% endblock %}
 {% block body %}
     <div class="container">
-        <h1>Modifier le trajet</h1>
+        <h1>{% trans %}Modifier le trajet{% endtrans %}</h1>
         {{ form_start(form) }}
         <div class="form-group">
             {{ form_label(form.villeDepart, 'Ville de départ') }}

@@ -10,32 +10,32 @@
 
     <table class="table">
         <tr>
-            <th>Email</th>
+            <th>{% trans %}Email{% endtrans %}</th>
             <td>{{ user.email }}</td>
         </tr>
         <tr>
-            <th>Téléphone</th>
+            <th>{% trans %}Téléphone{% endtrans %}</th>
             <td>{{ user.telephone }}</td>
         </tr>
         <tr>
-            <th>Nombre de trajets</th>
+            <th>{% trans %}Nombre de trajets{% endtrans %}</th>
             <td>{{ user.trajets|length }}</td>
         </tr>
         <tr>
-            <th>Nombre de réservations</th>
+            <th>{% trans %}Nombre de réservations{% endtrans %}</th>
             <td>{{ user.reservations|length }}</td>
         </tr>
         <tr>
-            <th>Nombre de commentaires</th>
+            <th>{% trans %}Nombre de commentaires{% endtrans %}</th>
             <td>{{ user.commentaires|length }}</td>
         </tr>
         <tr>
-            <th>Notes reçues</th>
+            <th>{% trans %}Notes reçues{% endtrans %}</th>
             <td>{{ user.getNotesRecues()|length }}</td>
         </tr>
     </table>
 
-    <h1>Mes trajets proposés</h1>
+    <h1>{% trans %}Mes trajets proposés{% endtrans %}</h1>
     {% if user.trajets|length > 0 %}
         <ul>
             {% for trajet in user.trajets %}
@@ -51,15 +51,14 @@
                         </div>
                         <div class="trajet-details">
                             <div class="trajet-dates">
-                                <p>Départ : {{ trajet.dateDepart|date('d/m/Y H:i') }}</p>
-                                <p>Arrivée : {{ trajet.dateArrivee|date('d/m/Y H:i') }}</p>
+                                <p>{% trans %}Départ{% endtrans %} : {{ trajet.dateDepart|date('d/m/Y H:i') }}</p>
+                                <p>{% trans %}Arrivée{% endtrans %} : {{ trajet.dateArrivee|date('d/m/Y H:i') }}</p>
                             </div>
                             <div class="trajet-places">
-                                <p>{{ trajet.nombrePlaces }} places disponibles</p>
+                                <p>{{ trajet.nombrePlaces }} {% trans %}places disponibles{% endtrans %}</p>
                             </div>
-                            <div class="trajet-conducteur">
-                                <p>Conducteur : {{ trajet.conducteur.prenom }} {{ trajet.conducteur.nom }}</p>
-                            </div>
+                            <a href="{{ path('trajet.edit', {id: trajet.id}) }}" class="editer"> {% trans %}Editer{% endtrans %}</a>
+                            <a href="{{ path('trajet.delete', {id: trajet.id}) }}" class="supprimer">{% trans %}Supprimer{% endtrans %}</a>
                         </div>
                     </div>
                 </a>
@@ -67,19 +66,19 @@
 
         </ul>
     {% else %}
-        <p>Aucun trajet proposé pour le moment.</p>
+        <p>{% trans %}Aucun trajet proposé pour le moment{% endtrans %}.</p>
     {% endif %}
 
-        <h1>Mes notes reçues</h1>
+        <h1>{% trans %}Mes notes reçues{% endtrans %}</h1>
     <div class = "notes_recues">
         {% if user.getNotesRecues()|length > 0 %}
             <ul>
                 {% for note in user.getNotesRecues() %}
-                    <li>{{ note.conducteur.prenom }} {{ note.conducteur.nom }} : {{ note.valeur }} / 5 - {{ note.commentaire }}</li>
+                    <li>{{ note.passager.prenom }} {{ note.passager.nom }} : {{ note.valeur }} / 5 - {{ note.commentaire }}</li>
                 {% endfor %}
             </ul>
         {% else %}
-            <p>Aucune note reçue pour le moment.</p>
+            <p>{% trans %}Aucune note reçue pour le moment.{% endtrans %}</p>
         {% endif %}
     </div>
 {% endblock %}

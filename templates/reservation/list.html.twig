@@ -1,7 +1,7 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des réservations{% endblock %}
+{% block title %}{% trans %}Liste des réservations{% endtrans %}{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -9,10 +9,10 @@
 {% endblock %}
 {% block body %}
     <div class="container">
-        <h1>Liste des réservations</h1>
+        <h1>{% trans %}Liste des réservations{% endtrans %}</h1>
 
         <div class="mb-3">
-            <a href="{{ path('reservation.history') }}" class="btn btn-secondary">Voir l'historique des réservations</a>
+            <a href="{{ path('reservation.history') }}" class="btn btn-secondary">{% trans %}Voir l'historique des réservations{% endtrans %}</a>
         </div>
 
         {% set isAdmin = 'ROLE_ADMIN' in app.user.roles %}
@@ -24,28 +24,28 @@
                         <div class="reservation-info">
                             {% if isAdmin %}
                                 <div class="reservation-passenger">
-                                    Passager: {{ reservation.passager.username }}
+                                    {% trans %}Passager{% endtrans %}: {{ reservation.passager.username }}
                                 </div>
                             {% endif %}
                             <div class="reservation-location">
                                 {{ reservation.trajet.getVilleDepart() }} &#x2192; {{ reservation.trajet.getVilleDestination() }}
                             </div>
                             <div class="reservation-dates">
-                                <p>Départ : {{ reservation.trajet.getDateDepart()|date('d/m/Y H:i') }}</p>
-                                <p>Arrivée : {{ reservation.trajet.getDateArrivee()|date('d/m/Y H:i') }}</p>
+                                <p>{% trans %}Départ{% endtrans %} : {{ reservation.trajet.getDateDepart()|date('d/m/Y H:i') }}</p>
+                                <p>{% trans %}Arrivée{% endtrans %} : {{ reservation.trajet.getDateArrivee()|date('d/m/Y H:i') }}</p>
                             </div>
                         </div>
                         <div class="reservation-actions">
-                            <a href="{{ path('reservation.show', {'id': reservation.id}) }}" class="btn btn-info">Détails</a>
+                            <a href="{{ path('reservation.show', {'id': reservation.id}) }}" class="btn btn-info">{% trans %}Détails{% endtrans %}</a>
                             {% if app.user == reservation.passager or isAdmin %}
-                                <a href="{{ path('reservation.delete', {'id': reservation.id}) }}" class="btn btn-danger">Supprimer</a>
+                                <a href="{{ path('reservation.delete', {'id': reservation.id}) }}" class="btn btn-danger">{% trans %}Supprimer{% endtrans %}</a>
                             {% endif %}
                         </div>
                     </div>
                 {% endif %}
             {% else %}
                 <div class="no-reservations-found">
-                    Aucune réservation trouvée.
+                    {% trans %}Aucune réservation trouvée.{% endtrans %}
                 </div>
             {% endfor %}
         </div>

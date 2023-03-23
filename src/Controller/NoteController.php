@@ -27,14 +27,15 @@ class NoteController extends AbstractController
         // Vérifier si la réservation existe et que l'utilisateur connecté est le passager
         if (!$reservation) {
             $this->addFlash('error', 'Vous ne pouvez pas ajouter une note pour ce trajet.');
-            return $this->redirectToRoute('reservation_history');
+            return $this->redirectToRoute('reservation.history');
         }
 
         // Vérifier si une note existe déjà pour cette réservation
-        $existingNote = $noteRepository->findOneBy(['trajet' => $trajetId, 'passager' => $user]);
+        $existingNote = $noteRepository->findOneBy(['conducteur' => $reservation->getTrajet()->getConducteur(), 'passager' => $user]);
+
         if ($existingNote) {
             $this->addFlash('error', 'Vous avez déjà ajouté une note pour ce trajet.');
-            return $this->redirectToRoute('reservation_history');
+            return $this->redirectToRoute('reservation.history');
         }
 
         // Récupérer les données du formulaire (valeur de la note et commentaire)
@@ -54,6 +55,6 @@ class NoteController extends AbstractController
 
         // Ajouter un message flash de succès et rediriger vers la page d'historique des réservations
         $this->addFlash('success', 'Note ajoutée avec succès.');
-        return $this->redirectToRoute('reservation_history');
+        return $this->redirectToRoute('reservation.history');
     }
 }

@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
-{% block title %}Afficher Trajet{% endblock %}
+{% block title %}{% trans %}Afficher Trajet{% endtrans %}{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/trajet.css') }}">
 {% endblock %}
 {% block body %}
     <div class="container">
-        <h2>Ville de départ : {{ trajet.villeDepart }} </h2>
-        <h2>Ville de destination : {{ trajet.villeDestination }}</h2>
+        <h2>{% trans %}Ville de départ{% endtrans %}: {{ trajet.villeDepart }} </h2>
+        <h2>{% trans %}Ville de destination{% endtrans %} : {{ trajet.villeDestination }}</h2>
         <div class="trajet-card">
             <div class="trajet-info">
                 <div class="trajet-location">
@@ -15,28 +15,27 @@
                 </div>
                 <div class="trajet-dates">
                     <p>
-                        <strong>Départ :</strong>
+                        <strong>{% trans %}Départ :{% endtrans %}</strong>
                         <span class="date">{{ trajet.dateDepart|date('d/m/Y') }}</span>
                         <span class="time">{{ trajet.dateDepart|date('H:i') }}</span>
                     </p>
                     <p>
-                        <strong>Arrivée :</strong>
+                        <strong>{% trans %}Arrivée :{% endtrans %}</strong>
                         <span class="date">{{ trajet.dateArrivee|date('d/m/Y') }}</span>
                         <span class="time">{{ trajet.dateArrivee|date('H:i') }}</span>
                     </p>
                 </div>
                 <div class="trajet-places">
-                    <p>{{ trajet.nombrePlaces }} places disponibles</p>
-                    <p class="trajet-conducteur">Conducteur : {{ trajet.conducteur.prenom }} {{ trajet.conducteur.nom }}</p>
+                    <p>{{ trajet.nombrePlaces }} {% trans %}places disponibles{% endtrans %}</p>
+                    <p class="trajet-conducteur">{% trans %}Conducteur{% endtrans %} : {{ trajet.conducteur.prenom }} {{ trajet.conducteur.nom }}</p>
                 </div>
                 <div class="reserver">
-                    <a href="{{ path('reservation.create', {'trajet_id': trajet.id}) }}" class="btn btn-primary">Réserver</a>
+                    <a href="{{ path('reservation.create', {'trajet_id': trajet.id}) }}" class="btn btn-primary">{% trans %}Réserver{% endtrans %}</a>
                 </div>
             </div>
         </div>
 
-        {# Display existing comments #}
-        <h3>Commentaires</h3>
+        <h3>{% trans %}Commentaires{% endtrans %}</h3>
         {% for comment in trajet.commentaires %}
             <div class="comment">
                 <strong>{{ comment.user.nom }} {{ comment.user.prenom }}</strong>
@@ -44,12 +43,11 @@
             </div>
         {% endfor %}
 
-        {# Display the form for adding a comment if the user has a reservation and the trip date has passed #}
         {% if app.user and userHasReservation and tripDatePassed %}
-            <h3>Poster un commentaire</h3>
+            <h3>{% trans %}Poster un commentaire{% endtrans %}</h3>
             {{ form_start(form, {'action': path('post_comment', {'id': trajet.id})}) }}
             {{ form_widget(form) }}
-            <button class="btn btn-primary" type="submit">Ajouter un commentaire</button>
+            <button class="btn btn-primary" type="submit">{% trans %}Ajouter un commentaire{% endtrans %}</button>
             {{ form_end(form) }}
         {% endif %}
     </div>

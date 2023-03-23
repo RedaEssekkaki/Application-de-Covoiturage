@@ -11,12 +11,12 @@
     <div class="hero">
         <div class="container">
             <div class="blur-bg">
-                <h1>Bienvenue sur notre plateforme de covoiturage</h1>
-                <p>Rejoignez notre communauté et partagez vos trajets en toute simplicité.</p>
+                <h1>{% trans %}Bienvenue sur notre plateforme de covoiturage{% endtrans %}</h1>
+                <p>{% trans %}Rejoignez notre communauté et partagez vos trajets en toute simplicité.{% endtrans %}</p>
 
                 <div class="hero-actions">
-                    <a href="{{ path('app_register') }}" class="hero-btn">Inscription</a> <!--  login et registration-->
-                    <a href="{{ path('app_login') }}" class="hero-btn">Connexion</a>
+                    <a href="{{ path('app_register') }}" class="hero-btn">{% trans %}Inscription{% endtrans %}</a> <!--  login et registration-->
+                    <a href="{{ path('app_login') }}" class="hero-btn">{% trans %}Connexion{% endtrans %}</a>
                 </div>
             </div>
         </div>
