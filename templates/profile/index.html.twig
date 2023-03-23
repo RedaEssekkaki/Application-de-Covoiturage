@@ -74,8 +74,8 @@
     <div class = "notes_recues">
         {% if user.getNotesRecues()|length > 0 %}
             <ul>
-                {% for note in user.notes_recues %}
-                    <li>{{ note.auteur.prenom }} {{ note.auteur.nom }} : {{ note.note }} / 5 - {{ note.commentaire }}</li>
+                {% for note in user.getNotesRecues() %}
+                    <li>{{ note.conducteur.prenom }} {{ note.conducteur.nom }} : {{ note.valeur }} / 5 - {{ note.commentaire }}</li>
                 {% endfor %}
             </ul>
         {% else %}

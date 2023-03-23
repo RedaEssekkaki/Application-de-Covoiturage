@@ -72,5 +72,7 @@ li {
 }
 
 .notes_recues{
-    background-color: var(--body-color);
+    background-color: wheat;
+    text-align: center;
+    text-space: 12px;
 }

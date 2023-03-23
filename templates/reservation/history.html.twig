@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block title %}Historique des réservations{% endblock %}
-
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/reservation-history.css') }}">
+{% endblock %}
 {% block body %}
     <div class="container">
         <h1>Historique des réservations</h1>
@@ -15,13 +18,28 @@
             </thead>
             <tbody>
             {% for reservation in reservations %}
-                <tr>
-                    <td>{{ reservation.trajet.villeDepart }} → {{ reservation.trajet.villeDestination }}</td>
-                    <td>{{ reservation.trajet.getDateDepart()|date('d/m/Y H:i') }}</td>
-                    <td>{{ reservation.trajet.getDateArrivee()|date('d/m/Y H:i') }}</td>
-                    <td>{{ reservation.trajet.conducteur.prenom }} {{ reservation.trajet.conducteur.nom }}</td>
-                </tr>
+            <tr>
+                <td>{{ reservation.trajet.villeDepart }} → {{ reservation.trajet.villeDestination }}</td>
+                <td>{{ reservation.trajet.getDateDepart()|date('d/m/Y H:i') }}</td>
+                <td>{{ reservation.trajet.getDateArrivee()|date('d/m/Y H:i') }}</td>
+                <td>{{ reservation.trajet.conducteur.prenom }} {{ reservation.trajet.conducteur.nom }}</td>
+                <td>
+                    <form action="{{ path('note_add', {'trajetId': reservation.trajet.id}) }}" method="POST">
+                        <label for="valeur-{{ reservation.trajet.id }}">Note :</label>
+                        <select name="valeur" id="valeur-{{ reservation.trajet.id }}" required>
+                            <option value="">Sélectionnez une note</option>
+                            {% for i in 1..5 %}
+                            <option value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="commentaire-{{ reservation.trajet.id }}">Commentaire :</label>
+                        <textarea name="commentaire" id="commentaire-{{ reservation.trajet.id }}" rows="3" placeholder="Votre commentaire..."></textarea>
+                        <button type="submit" class="btn btn-primary">Ajouter une note</button>
+                    </form>
+                </td>
+            </tr>
             {% endfor %}
+
             </tbody>
         </table>
     </div>
